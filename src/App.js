@@ -9,6 +9,7 @@ import MapBoard from "./components/map-board/MapBoard";
 function App() {
   return (
     <div id="app"> 
+      {/* <Dashboard /> */}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
