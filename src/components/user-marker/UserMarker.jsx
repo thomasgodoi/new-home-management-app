@@ -1,19 +1,11 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Button } from "antd";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
-import L from "leaflet";
 import { useMapContext } from "../context/MapContext";
 
 export default function UserMarker() {
-
-    const {
-        position,
-        setPosition,
-        setCoordinates,
-        setOpen,
-        iconUser
-     } = useMapContext();
-
+  const { position, setPosition, setCoordinates, setOpen, iconUser } =
+    useMapContext();
 
   useMapEvents({
     click: (e) => {

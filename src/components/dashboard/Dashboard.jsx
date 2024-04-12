@@ -1,14 +1,8 @@
-import React from "react"
-import { useMapContext } from "../context/MapContext"
+import React from "react";
+import { useMapContext } from "../context/MapContext";
 
 export default function Dashboard() {
-    const {
-        open
-    } = useMapContext();
+  const { open } = useMapContext();
 
-    return (
-        <div style={{color: "white"}}>
-            Dashboard = {open}
-        </div>
-    )
+  return <div style={{ color: "white" }}>Dashboard {open}</div>;
 }

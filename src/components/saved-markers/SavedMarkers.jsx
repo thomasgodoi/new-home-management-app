@@ -2,16 +2,40 @@ import React, { useEffect, useState } from "react";
 import { MapService } from "../services/MapService";
 import { Marker, Popup } from "react-leaflet";
 import { useMapContext } from "../context/MapContext";
+import { Button } from "antd";
 
 export default function SavedMarkers() {
+  const { openNotification, setOpen } = useMapContext();
+
   const { iconUser } = useMapContext();
   const [markerList, setMarkerList] = useState([]);
 
-  useEffect(() => {
+  function getHomeList() {
     MapService.findHomesList().then((response) => {
-      console.log(response.data);
       setMarkerList(response.data);
     });
+  }
+
+  function deleteMarker(id) {
+    console.log("id", id);
+    try {
+      MapService.deleteHome(id).then(() => {
+        openNotification("success", "Sucesso", "Marcador excluído com sucesso");
+        getHomeList();
+        setOpen(false);
+      });
+    } catch (err) {
+      openNotification(
+        "error",
+        "Erro",
+        "Houve um problema ao excluir o marcador"
+      );
+      console.error("error => ", err);
+    }
+  }
+
+  useEffect(() => {
+    getHomeList();
   }, []);
 
   return (
@@ -40,6 +64,13 @@ export default function SavedMarkers() {
                 <div>
                   <b>Construtora:</b> <span>{item.homeConstructor}</span>
                 </div>
+                <Button
+                  type="primary"
+                  danger
+                  onClick={() => deleteMarker(item.idHome)}
+                >
+                  Excluir marcador
+                </Button>
               </div>
             </Popup>
           </Marker>

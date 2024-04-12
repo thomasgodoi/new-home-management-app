@@ -11,11 +11,10 @@ import ModalSaveMap from "../modals/ModalSaveMap";
 import SavedMarkers from "../saved-markers/SavedMarkers";
 
 export default function MapBoard() {
-  const { setOpen, isEnabled, setIsEnabled, coordinates } = useMapContext();
+  const { isEnabled, setIsEnabled, coordinates } = useMapContext();
 
   return (
     <div style={{ width: "100%" }}>
-      <Button onClick={() => setOpen(true)}>Save inserted marker</Button>
       <Button onClick={() => setIsEnabled(!isEnabled)}>Add marker</Button>
       <MapContainer
         center={[-23.241119, -45.916765]}

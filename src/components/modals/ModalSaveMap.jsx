@@ -4,11 +4,7 @@ import { Button, Form, Input, Modal, Select } from "antd";
 import { MapService } from "../services/MapService";
 
 export default function ModalSaveMap() {
-  const {
-    open,
-    setOpen,
-    coordinates,
-  } = useMapContext();
+  const { open, setOpen, coordinates, openNotification } = useMapContext();
   const [form] = Form.useForm();
 
   function handleSubmitMarker(e) {
@@ -22,8 +18,24 @@ export default function ModalSaveMap() {
     dto.homeLatitude = coordinates[0];
     dto.homeName = e.home_name;
 
-    console.log(dto)
-    MapService.saveHome(dto);
+    console.log(dto);
+    try {
+      MapService.saveHome(dto).then((r) => {
+        if (r.status === 200) {
+          openNotification("success", "Sucesso", "Marcador salvo.");
+          setOpen(false);
+          return;
+        }
+        openNotification(
+          "error",
+          "Erro",
+          "Houve um problema ao salvar o marcador"
+        );
+      });
+    } catch (error) {
+      console.error(error);
+      openNotification("error", "Erro", "Tente novamente mais tarde");
+    }
   }
 
   return (
@@ -94,20 +106,20 @@ export default function ModalSaveMap() {
             <Select.Option value="2030">2030</Select.Option>
           </Select>
         </Form.Item>
-        <div style={{display:"flex", justifyContent:"center"}}>
-            <Button
-            style={{marginRight: "10px"}}
-              danger
-              type="primary"
-              onClick={() => {
-                form.resetFields();
-              }}
-            >
-              Cancelar
-            </Button>
-            <Button type="primary" htmlType="submit" >
-              Salvar
-            </Button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            style={{ marginRight: "10px" }}
+            danger
+            type="primary"
+            onClick={() => {
+              form.resetFields();
+            }}
+          >
+            Cancelar
+          </Button>
+          <Button type="primary" htmlType="submit">
+            Salvar
+          </Button>
         </div>
       </Form>
     </Modal>

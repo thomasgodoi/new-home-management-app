@@ -11,15 +11,14 @@ import { MapProvider } from "./components/context/MapContext";
 function App() {
   return (
     <div id="app">
-        <MapProvider>
-          {/* <Dashboard /> */}
-          {/* <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/map-board" element={<MapBoard />} />
-          </Routes> */}
-          <MapBoard />
-        </MapProvider>
+      <MapProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/map-board" element={<MapBoard />} />
+        </Routes>
+      </MapProvider>
     </div>
   );
 }
