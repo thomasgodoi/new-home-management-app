@@ -5,16 +5,21 @@ import Login from "./components/login/Login";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import MapBoard from "./components/map-board/MapBoard";
+import React from "react";
+import { MapProvider } from "./components/context/MapContext";
 
 function App() {
   return (
-    <div id="app"> 
-      {/* <Dashboard /> */}
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/map-board" element={<MapBoard />} />
-      </Routes>
+    <div id="app">
+        <MapProvider>
+          {/* <Dashboard /> */}
+          {/* <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/map-board" element={<MapBoard />} />
+          </Routes> */}
+          <MapBoard />
+        </MapProvider>
     </div>
   );
 }
