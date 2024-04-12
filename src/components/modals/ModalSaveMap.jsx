@@ -18,8 +18,8 @@ export default function ModalSaveMap() {
     dto.homeFinishYear = e.home_finish_year;
     dto.homeFinishMonth = e.home_finish_month;
     dto.homePrice = e.home_price;
-    dto.homeLongitude = coordinates[0];
-    dto.homeLatitude = coordinates[1];
+    dto.homeLongitude = coordinates[1];
+    dto.homeLatitude = coordinates[0];
     dto.homeName = e.home_name;
 
     console.log(dto)

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { MapService } from "../services/MapService";
-import { Button } from "antd";
 import { Marker, Popup } from "react-leaflet";
 import { useMapContext } from "../context/MapContext";
 
@@ -17,9 +16,10 @@ export default function SavedMarkers() {
 
   return (
     <>
-      {markerList.map((item) => {
+      {markerList.map((item, idx) => {
         return (
           <Marker
+            key={idx}
             position={[item.homeLatitude, item.homeLongitude]}
             icon={iconUser}
           >

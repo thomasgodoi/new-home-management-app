@@ -22,7 +22,7 @@ export default function UserMarker() {
         latitude: lat,
         longitude: lng,
       });
-      setCoordinates([lat, lng]);
+      setCoordinates([lat.toFixed(6), lng.toFixed(6)]);
     },
   });
 
