@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useMapContext } from "../context/MapContext";
 import { Button, Form, Input, Modal, Select } from "antd";
 import { MapService } from "../services/MapService";
@@ -8,10 +8,6 @@ export default function ModalSaveMap() {
     open,
     setOpen,
     coordinates,
-    // homeFinishMonth,
-    // setHomeFinishMonth,
-    // homeFinishYear,
-    // setHomeFinishYear,
   } = useMapContext();
   const [form] = Form.useForm();
 
@@ -29,10 +25,6 @@ export default function ModalSaveMap() {
     console.log(dto)
     MapService.saveHome(dto);
   }
-
-  //   useEffect(() => {
-  //     MapService.findHomeList().then((r) => console.log("r", r.data));
-  //   }, []);
 
   return (
     <Modal

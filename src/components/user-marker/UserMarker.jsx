@@ -10,13 +10,9 @@ export default function UserMarker() {
         position,
         setPosition,
         setCoordinates,
-        setOpen
+        setOpen,
+        iconUser
      } = useMapContext();
-
-    const iconUser = L.icon({
-        iconUrl: "/map-icons/marker-icon.png",
-        shadowUrl: "/map-icons/marker-shadow.png",
-      });
 
 
   useMapEvents({

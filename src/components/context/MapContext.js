@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import L from "leaflet"
 
 const MapContext = createContext();
 
@@ -9,10 +10,15 @@ export function MapProvider({ children }) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [homeFinishMonth, setHomeFinishMonth] = useState("");
   const [homeFinishYear, setHomeFinishYear] = useState("");
+  const iconUser = L.icon({
+    iconUrl: "/map-icons/marker-icon.png",
+    shadowUrl: "/map-icons/marker-shadow.png",
+  });
 
   return (
     <MapContext.Provider
       value={{
+        iconUser,
         coordinates,
         setCoordinates,
         position,
@@ -24,7 +30,7 @@ export function MapProvider({ children }) {
         homeFinishMonth,
         setHomeFinishMonth,
         homeFinishYear,
-        setHomeFinishYear
+        setHomeFinishYear,
       }}
     >
       {children}

@@ -1,24 +1,17 @@
 /* eslint-disable */
-import React, { useContext, useRef, useState } from "react";
-import L, { map } from "leaflet";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
-import { Modal, Button } from "antd";
+import React from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
+import { Button } from "antd";
 
 import "leaflet/dist/leaflet.css";
 import "./MapBoard.css";
 import UserMarker from "../user-marker/UserMarker";
 import { useMapContext } from "../context/MapContext";
 import ModalSaveMap from "../modals/ModalSaveMap";
+import SavedMarkers from "../saved-markers/SavedMarkers";
 
 export default function MapBoard() {
-  const { open, setOpen, isEnabled, setIsEnabled, coordinates } =
-    useMapContext();
+  const { setOpen, isEnabled, setIsEnabled, coordinates } = useMapContext();
 
   return (
     <div style={{ width: "100%" }}>
@@ -35,6 +28,7 @@ export default function MapBoard() {
           maxZoom={25}
           minZoom={15}
         />
+        <SavedMarkers />
         {isEnabled && (
           <>
             <ModalSaveMap />

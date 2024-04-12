@@ -3,12 +3,12 @@ import axios from "axios";
 const BASE_URL = "http://localhost:8080/home/";
 
 export const MapService = {
-    findHomeList,
+    findHomesList,
     saveHome,
 
 };
 
-function findHomeList() {
+function findHomesList() {
     return axios.get(BASE_URL + `find-all`);
 }
 
