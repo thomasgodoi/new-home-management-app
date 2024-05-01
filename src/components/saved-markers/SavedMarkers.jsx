@@ -5,7 +5,7 @@ import { useMapContext } from "../context/MapContext";
 import { Button } from "antd";
 
 export default function SavedMarkers() {
-  const { openNotification, setOpen } = useMapContext();
+  const { openNotification, setModalSaveMarkerOpen } = useMapContext();
 
   const { iconUser } = useMapContext();
   const [markerList, setMarkerList] = useState([]);
@@ -22,7 +22,7 @@ export default function SavedMarkers() {
       MapService.deleteHome(id).then(() => {
         openNotification("success", "Sucesso", "Marcador excluído com sucesso");
         getHomeList();
-        setOpen(false);
+        setModalSaveMarkerOpen(false);
       });
     } catch (err) {
       openNotification(

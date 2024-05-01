@@ -7,7 +7,7 @@ const MapContext = createContext();
 export function MapProvider({ children }) {
   const [coordinates, setCoordinates] = useState([]);
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
-  const [open, setOpen] = useState(false);
+  const [modalSaveMarkerOpen, setModalSaveMarkerOpen] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
   const [homeFinishMonth, setHomeFinishMonth] = useState("");
   const [homeFinishYear, setHomeFinishYear] = useState("");
@@ -34,8 +34,8 @@ export function MapProvider({ children }) {
         setCoordinates,
         position,
         setPosition,
-        open,
-        setOpen,
+        modalSaveMarkerOpen,
+        setModalSaveMarkerOpen,
         isEnabled,
         setIsEnabled,
         homeFinishMonth,

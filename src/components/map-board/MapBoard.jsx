@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
-import { Button } from "antd";
+import { Button, Card } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 
 import "leaflet/dist/leaflet.css";
 import "./MapBoard.css";
 import UserMarker from "../user-marker/UserMarker";
 import { useMapContext } from "../context/MapContext";
-import ModalSaveMap from "../modals/ModalSaveMap";
+import ModalSaveMarker from "../modals/ModalSaveMarker";
 import SavedMarkers from "../saved-markers/SavedMarkers";
 
 export default function MapBoard() {
@@ -15,7 +16,20 @@ export default function MapBoard() {
 
   return (
     <div style={{ width: "100%" }}>
-      <Button onClick={() => setIsEnabled(!isEnabled)}>Add marker</Button>
+      <Button
+        icon={<PlusOutlined />}
+        type="primary"
+        onClick={() => setIsEnabled(!isEnabled)}
+        style={{
+          position: "absolute",
+          bottom: "30px",
+          right: "10px",
+          zIndex: "401",
+          filter: "drop-shadow(1px 1px 2px rgba(0,0,0, 0.5)",
+        }}
+      >
+        Adicionar casa
+      </Button>
       <MapContainer
         center={[-23.241119, -45.916765]}
         zoom={13}
@@ -30,7 +44,7 @@ export default function MapBoard() {
         <SavedMarkers />
         {isEnabled && (
           <>
-            <ModalSaveMap />
+            <ModalSaveMarker />
             <UserMarker />
             <div
               style={{
@@ -38,18 +52,24 @@ export default function MapBoard() {
                 zIndex: 550,
                 left: "50%",
                 transform: "translate(-50%,-50%)",
-                bottom: "200px",
-                width: "200px",
+                bottom: "100px",
                 padding: "5px 10px",
-                background: "black",
                 color: "white",
+                filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))",
               }}
             >
-              <span>
-                {coordinates.length > 0
-                  ? `Clique sobre o marcador para salvar`
-                  : `Insira um marcador no mapa`}
-              </span>
+              <Card
+                size="small"
+                style={{
+                  textWrap: "nowrap",
+                  background: "#1677ff",
+                  color: "white",
+                  border: "none",
+                }}
+              >
+                Insira um marcador no mapa clique nele para salvar
+              </Card>
+              )
             </div>
           </>
         )}
