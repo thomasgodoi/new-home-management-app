@@ -1,0 +1,8 @@
+#homes-list tr:nth-child(even) {
+    background-color: #FBFBFB;
+}
+
+#homes-list Button {
+    filter: drop-shadow(0 0 0 black);
+    box-shadow: none;
+}

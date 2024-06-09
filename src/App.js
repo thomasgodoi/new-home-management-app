@@ -8,6 +8,7 @@ import HomesMap from "./components/homes-map/HomesMap";
 import React from "react";
 import { MapProvider } from "./components/context/MapContext";
 import AppHeader from "./components/header/AppHeader";
+import HomesList from "./components/homes-list/HomesList";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/" element={<Dashboard />} />
               <Route path="/homes-map" element={<HomesMap />} />
+              <Route path="/homes-list" element={<HomesList />} />
             </Routes>
           </div>
         </div>

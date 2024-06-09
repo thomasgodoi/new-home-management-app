@@ -1,11 +1,12 @@
 /* eslint-disable */
 import React from "react";
 import { Button } from "antd";
-import { PlusOutlined, RollbackOutlined, CloseOutlined } from "@ant-design/icons";
+import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import "leaflet/dist/leaflet.css";
 import "./homes-map.css";
 import { useMapContext } from "../context/MapContext";
 import MapInsertHome from "../maps/MapInsertHome";
+import PageTitle from "../page-title/PageTitle";
 
 export default function HomesMap() {
   const { insertHomeMarkerEnabled, setInsertHomeMarkerEnabled, coordinates } = useMapContext();
@@ -20,21 +21,7 @@ export default function HomesMap() {
           justifyContent: "space-between",
         }}
       >
-        <h1>Homes</h1>
-        <Button
-          id="go-back"
-          icon={<RollbackOutlined />}
-          danger
-          type="link"
-          onClick={() => window.location.assign("/dashboard")}
-          style={{
-            background: "#6F5C4C",
-            color: "white",
-            filter: "drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 2px)",
-          }}
-        >
-          Voltar
-        </Button>
+      <PageTitle pageTitle="Homes Map" pageUrl="/dashboard"/>
       </div>
       <div id="mapboard-map">
         <MapInsertHome insertHomeMarkerEnabled={insertHomeMarkerEnabled} />

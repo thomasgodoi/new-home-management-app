@@ -1,5 +1,5 @@
-import React from "react";
 import { useMapContext } from "../context/MapContext";
+import { MapService as MAP_SERVICE } from "../services/MapService";
 import {
   Button,
   Form,
@@ -9,17 +9,15 @@ import {
   Divider,
   ConfigProvider,
 } from "antd";
-import { MapService as MAP_SERVICE } from "../services/MapService";
 
-export default function ModalSaveMarker(props) {
-  const {
-    modalSaveMarkerOpen,
-    setModalSaveMarkerOpen,
-    coordinates,
-    openNotification,
-    setInsertHomeMarkerEnabled,
-    setMarkerList,
-  } = useMapContext();
+export default function ModalEditHome(props) {
+    const {
+        setModalSaveMarkerOpen,
+        coordinates,
+        openNotification,
+        setInsertHomeMarkerEnabled,
+        setMarkerList,
+      } = useMapContext();
   const [form] = Form.useForm();
 
   function handleSubmitMarker(e) {
@@ -58,7 +56,7 @@ export default function ModalSaveMarker(props) {
 
   return (
     <>
-      {modalSaveMarkerOpen && (
+      {props.isModalEditHomeVisible && (
         <ConfigProvider
           theme={{
             components: {
@@ -71,8 +69,7 @@ export default function ModalSaveMarker(props) {
           }}
         >
           <Modal
-            open={modalSaveMarkerOpen}
-            onCancel={() => setModalSaveMarkerOpen(false)}
+            open={props.isModalEditHomeVisible}
             footer={[]}
             title="Salvar marcador"
             width="450px"
@@ -98,7 +95,7 @@ export default function ModalSaveMarker(props) {
                 rules={[{ required: true, message: "Insert home's name" }]}
               >
                 <Input />
-              </Form.Item >
+              </Form.Item>
               <Form.Item label="Home price" name="home_price">
                 <Input prefix="R$" type="number" />
               </Form.Item>
@@ -141,7 +138,6 @@ export default function ModalSaveMarker(props) {
                   type="primary"
                   onClick={() => {
                     form.resetFields();
-                    setModalSaveMarkerOpen(false);
                   }}
                 >
                   Cancelar

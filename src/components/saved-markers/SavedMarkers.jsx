@@ -1,26 +1,25 @@
 import "./saved-markers.css";
 import React, { useEffect, useState } from "react";
-import { MapService } from "../services/MapService";
+import { MapService as MAP_SERVICE } from "../services/MapService";
 import { Marker, Popup } from "react-leaflet";
 import { useMapContext } from "../context/MapContext";
 import { Button } from "antd";
 
 export default function SavedMarkers() {
-  const { openNotification, setModalSaveMarkerOpen } = useMapContext();
+  const { openNotification, setModalSaveMarkerOpen, markerList, setMarkerList } = useMapContext();
 
   const { iconUser } = useMapContext();
-  const [markerList, setMarkerList] = useState([]);
 
   function getHomeList() {
-    MapService.findHomesList().then((response) => {
+    MAP_SERVICE.findHomesList().then((response) => {
       setMarkerList(response.data);
     });
   }
 
   function deleteMarker(id) {
     try {
-      MapService.deleteHome(id).then(() => {
-        openNotification("success", "Sucesso", "Marcador excluído com sucesso");
+      MAP_SERVICE.deleteHome(id).then(() => {
+        openNotification("success", "Success", "Marker removed");
         getHomeList();
         setModalSaveMarkerOpen(false);
       });
@@ -90,7 +89,7 @@ export default function SavedMarkers() {
                 <Button
                   type="primary"
                   danger
-                  onClick={() => deleteMarker(item.idHome)}
+                  onClick={() => {deleteMarker(item.idHome); setModalSaveMarkerOpen(false)}}
                 >
                   Excluir marcador
                 </Button>

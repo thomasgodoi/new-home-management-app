@@ -12,6 +12,7 @@ export function MapProvider({ children }) {
   const [homeFinishMonth, setHomeFinishMonth] = useState("");
   const [homeFinishYear, setHomeFinishYear] = useState("");
   const [api, notificationContextHolder] = notification.useNotification();
+  const [markerList, setMarkerList] = useState([]);
 
   const iconUser = L.icon({
     iconUrl: "/map-icons/marker-icon.png",
@@ -46,6 +47,8 @@ export function MapProvider({ children }) {
         api,
         notificationContextHolder,
         openNotification,
+        markerList,
+        setMarkerList
       }}
     >
       {children}

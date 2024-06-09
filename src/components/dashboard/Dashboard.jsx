@@ -23,7 +23,7 @@ export default function Dashboard() {
         icon={<FolderOpenFilled />}
         style={{ background: "#6F5C4C" }}
         type="primary"
-        onClick={() => window.location.assign("/home-list")}
+        onClick={() => window.location.assign("/homes-list")}
       >
         Homes List
       </Button>
