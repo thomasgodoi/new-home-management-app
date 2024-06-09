@@ -112,6 +112,7 @@ export default function HomesList() {
 
   function handleEditHome(home) {
       console.log('home', home);
+      // TODO: arrumar modal edit home
       setIsModalEditHomeVisible(true);
     setEditHome(home);
   }
