@@ -8,7 +8,7 @@ export function MapProvider({ children }) {
   const [coordinates, setCoordinates] = useState([]);
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const [modalSaveMarkerOpen, setModalSaveMarkerOpen] = useState(false);
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [insertHomeMarkerEnabled, setInsertHomeMarkerEnabled] = useState(false);
   const [homeFinishMonth, setHomeFinishMonth] = useState("");
   const [homeFinishYear, setHomeFinishYear] = useState("");
   const [api, notificationContextHolder] = notification.useNotification();
@@ -16,6 +16,7 @@ export function MapProvider({ children }) {
   const iconUser = L.icon({
     iconUrl: "/map-icons/marker-icon.png",
     shadowUrl: "/map-icons/marker-shadow.png",
+    iconAnchor: [10,20]
   });
 
   function openNotification(type, message, description) {
@@ -36,8 +37,8 @@ export function MapProvider({ children }) {
         setPosition,
         modalSaveMarkerOpen,
         setModalSaveMarkerOpen,
-        isEnabled,
-        setIsEnabled,
+        insertHomeMarkerEnabled,
+        setInsertHomeMarkerEnabled,
         homeFinishMonth,
         setHomeFinishMonth,
         homeFinishYear,

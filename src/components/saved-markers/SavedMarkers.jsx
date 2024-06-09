@@ -1,3 +1,4 @@
+import "./saved-markers.css";
 import React, { useEffect, useState } from "react";
 import { MapService } from "../services/MapService";
 import { Marker, Popup } from "react-leaflet";
@@ -17,7 +18,6 @@ export default function SavedMarkers() {
   }
 
   function deleteMarker(id) {
-    console.log("id", id);
     try {
       MapService.deleteHome(id).then(() => {
         openNotification("success", "Sucesso", "Marcador excluído com sucesso");
@@ -48,22 +48,45 @@ export default function SavedMarkers() {
             icon={iconUser}
           >
             <Popup>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div>
-                  <b>nome:</b> <span>{item.homeName}</span>
-                </div>
-                <div>
-                  <b>preço:</b> <span>{item.homePrice}</span>
-                </div>
-                <div>
-                  <b>Data de entrega:</b>{" "}
-                  <span>
-                    {item.homeFinishMonth}/{item.homeFinishYear}
-                  </span>
-                </div>
-                <div>
-                  <b>Construtora:</b> <span>{item.homeConstructor}</span>
-                </div>
+              <div style={{padding: "10px 0 30px 0", width:"250px"}}>
+                <table id="table-marker-home">
+                  <tr><h3>{item.homeName}</h3></tr>
+                  <tr>
+                    <td>
+                      <b>preço:</b>
+                    </td>
+                    <td>
+                      <span>{item.homePrice}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Data de entrega</b>
+                    </td>
+                    <td>
+                    <span>
+                      {item.homeFinishMonth}/{item.homeFinishYear}
+                    </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Construtora</b>
+                    </td>
+                    <td>
+                    <span>
+                    {item.homeConstructor}
+                    </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div id="remove-marker"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <Button
                   type="primary"
                   danger

@@ -1,4 +1,13 @@
 #dashboard-div {
-    color: white;
-    width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 7px;
+  border: 1px solid #6f5c4c;
+  padding: 10px 100px;
+}
+
+Button {
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 2px);
 }

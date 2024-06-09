@@ -4,7 +4,6 @@ import {
   Marker,
   Popup,
   useMap,
-  useMapEvent,
   useMapEvents,
 } from "react-leaflet";
 import { useMapContext } from "../context/MapContext";
@@ -46,10 +45,10 @@ export default function UserMarker() {
               justifyContent: "space-evenly",
             }}
           >
-            <Button type="primary" danger onClick={() => map.closePopup()}>
+            <Button style={{background: "#C35354"}} type="primary" danger onClick={() => map.closePopup()}>
               Não
             </Button>
-            <Button type="primary" onClick={() => setModalSaveMarkerOpen(true)}>
+            <Button style={{background: "#008E56"}} type="primary" onClick={() =>{ setModalSaveMarkerOpen(true); map.closePopup()}}>
               Sim
             </Button>
           </div>

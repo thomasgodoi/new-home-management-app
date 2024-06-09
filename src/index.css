@@ -3,7 +3,13 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
-  background: #131516;
+  background: #F9F7F5;
+  height: 100vh;
+}
+
+body h1 {
+  color: #6F5C4C;  
+  padding-top: 0;
 }
 
 .font-light {
